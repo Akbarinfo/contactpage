@@ -16,45 +16,62 @@ function addItem(e) {
   let name = elName.value;
   let nameItem = document.createElement('p');
   nameItem.className = "contact__text";
-  nameItem.textContent = name;
-
-  console.log(`Familya ${name}`);
 
   // familya olamiz
 
   let fname = elFname.value;
-  let fNameItem = document.createElement('p');
-  fNameItem.className = "contact__text";
-  fNameItem.textContent = fname;
+  nameItem.innerHTML = `
+  <span class="contact__cate">Full name</span>
+  ${name} ${fname}
+  `;
+
 
   // Number olamiz
 
   let number = elNumber.value;
   let iNumber = document.createElement('p');
   iNumber.className = "contact__text";
-  iNumber.textContent = number;
+  iNumber.innerHTML = `<span class="contact__cate">Number</span>
+  ${number}`;
+  // iNumber.textContent = number;
+
+  // Categoty
+
+  let cate = document.createElement('p');
+  cate.className = "contact__text";
+  cate.innerHTML = `<span class="contact__cate">Category</span>
+  ${elCategory.value}`;
+  // cate.textContent = elCategory.value;
 
   // Telfon qilish
 
   let cNumber = document.createElement('p');
   cNumber.className = "contact__text";
-  cNumber.innerHTML = `<a class="contact__tel" href="tel:${number}">Call</a>`;
+  cNumber.innerHTML = `<a class="contact__tel" href="tel:${number}">Call <i class='bx bxs-phone-call'></i></a>`;
 
 
   // li itemga qo'shamiz
 
   let liItem = document.createElement('li');
-  liItem.className = `contact__item ${elCategory.value}`;
+  liItem.className = `contact__item contact__${elCategory.value}`;
 
 
   liItem.appendChild(nameItem);
-  liItem.appendChild(fNameItem);
   liItem.appendChild(iNumber);
+  liItem.appendChild(cate);
   liItem.appendChild(cNumber);
+
+
+  // inputlarni tozalash
+
+  elName.value = '';
+  elFname.value = '';
+  elNumber.value = '';
 
   // display chiqaramiz
 
   elList.appendChild(liItem);
+
 }
 
 
@@ -71,7 +88,7 @@ elAll.addEventListener('click', () => {
   let sortLi = document.querySelectorAll('li');
 
   for(let i = 0; i < sortLi.length; i++) {
-    if(sortLi[i].classList.contains("family") || sortLi[i].classList.contains("friends") || sortLi[i].classList.contains("colleague")) {
+    if(sortLi[i].classList.contains("contact__family") || sortLi[i].classList.contains("contact__friends") || sortLi[i].classList.contains("contact__colleague")) {
       sortLi[i].style.display = 'block';
     }
   }
@@ -81,7 +98,7 @@ elFam.addEventListener('click', ()=> {
     let sortLi = document.querySelectorAll('li');
 
     for(let i = 0; i < sortLi.length; i++) {
-      if(! sortLi[i].classList.contains("family")) {
+      if(! sortLi[i].classList.contains("contact__family")) {
         sortLi[i].style.display = 'none';
       } else {
         sortLi[i].style.display = 'block'
@@ -93,7 +110,7 @@ elFam.addEventListener('click', ()=> {
     let sortLi = document.querySelectorAll('li');
 
     for(let i = 0; i < sortLi.length; i++) {
-      if(! sortLi[i].classList.contains("friends")) {
+      if(! sortLi[i].classList.contains("contact__friends")) {
         sortLi[i].style.display = 'none';
       } else {
         sortLi[i].style.display = 'block';
@@ -106,7 +123,7 @@ elFam.addEventListener('click', ()=> {
     let sortLi = document.querySelectorAll('li');
 
     for(let i = 0; i < sortLi.length; i++) {
-      if(! sortLi[i].classList.contains("colleague")) {
+      if(! sortLi[i].classList.contains("contact__colleague")) {
         sortLi[i].style.display = 'none';
       } else {
         sortLi[i].style.display = 'block';

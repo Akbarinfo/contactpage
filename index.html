@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="css/main.min.css">
 </head>
 
@@ -23,17 +24,22 @@
 
           <div class="contact__boxinput">
             <form class="contact__form" id="form">
-              <label for="name">
+              <label class="contact__label" for="name">
+                <span class="contact__span">First name</span>
                 <input class="contact__input" type="text" id="name" placeholder="Name" required>
               </label>
-              <label for="fname">
+              <label class="contact__label" for="fname">
+                <span class="contact__span">Last name</span>
+
                 <input class="contact__input" type="text" id="fname" placeholder="FName" required>
               </label>
-              <label for="number">
-                <input class="contact__input" type="text" id="number" value="+998" required>
+              <label class="contact__label" for="number">
+                <span class="contact__span">Number</span>
+                <input class="contact__input" type="number" id="number" value="998" required>
               </label>
 
-              <label for="select">
+              <label class="contact__label" for="select">
+                <span class="contact__span">Category</span>
                 <select class="contact__select" name="contact-cat" id="contact-cat">
                   <option value="family">Family</option>
                   <option value="friends">Friends</option>
@@ -59,10 +65,22 @@
           </div>
 
           <ul class="contact__list" id="id-list">
-            <li class="contact__item">
-              <p class="contact__text">Toshmat Eshmatov</p>
-              <p class="contact__text">+998931234567</p>
-              <p class="contact__text"><a class="contact__tel" href="tel:+998931234567">Call</a></p>
+            <li class="contact__item contact__family">
+              <p class="contact__text">
+                <span class="contact__cate">Full name</span>
+                Toshmat Eshmatov
+              </p>
+              <p class="contact__text">
+                <span class="contact__cate">Number</span>
+                +998931234567
+              </p>
+
+              <p class="contact__text">
+                <span class="contact__cate">Category</span>
+                Family
+              </p>
+
+              <p class="contact__text"><a class="contact__tel" href="tel:+998931234567">Call <i class='bx bxs-phone-call'></i></a></p>
             </li>
 
           </ul>
