@@ -5,6 +5,11 @@ const elNumber = document.querySelector('input[id="number"]');
 const elCategory = document.getElementById('contact-cat');
 const elList = document.querySelector('#id-list');
 
+// SORTLASH QISMI
+const elAll = document.getElementById('all');
+const elFam = document.getElementById('fam');
+const elFri = document.getElementById('fri');
+const elCol = document.getElementById('col');
 
 elForm.addEventListener('submit', addItem);
 
@@ -77,57 +82,91 @@ function addItem(e) {
 
 // Filter qilish qismi
 
-// SORTLASH QISMI
-
-const elAll = document.getElementById('all');
-const elFam = document.getElementById('fam');
-const elFri = document.getElementById('fri');
-const elCol = document.getElementById('col');
-
 elAll.addEventListener('click', () => {
   let sortLi = document.querySelectorAll('li');
 
-  for(let i = 0; i < sortLi.length; i++) {
-    if(sortLi[i].classList.contains("contact__family") || sortLi[i].classList.contains("contact__friends") || sortLi[i].classList.contains("contact__colleague")) {
-      sortLi[i].style.display = 'block';
+  let a = [...sortLi].filter(el => {
+    if(el.classList.contains("contact__family") || el.classList.contains("contact__friends") || el.classList.contains("contact__colleague")) {
+      el.style.display = 'block'
+      return el
     }
-  }
+  })
+
+  console.log(a)
+  // for(let i = 0; i < sortLi.length; i++) {
+  //   if(sortLi[i].classList.contains("contact__family") || sortLi[i].classList.contains("contact__friends") || sortLi[i].classList.contains("contact__colleague")) {
+  //     sortLi[i].style.display = 'block';
+  //   }
+  // }
 });
 
 elFam.addEventListener('click', ()=> {
     let sortLi = document.querySelectorAll('li');
 
-    for(let i = 0; i < sortLi.length; i++) {
-      if(! sortLi[i].classList.contains("contact__family")) {
-        sortLi[i].style.display = 'none';
-      } else {
-        sortLi[i].style.display = 'block'
+    let a = [...sortLi].filter(el => {
+      if(! el.classList.contains("contact__family")) {
+        el.style.display = 'none'
+        return el
       }
-    }
+      else {
+        el.style.display = 'block'
+        return el
+      }
+    })
+
+    // for(let i = 0; i < sortLi.length; i++) {
+    //   if(! sortLi[i].classList.contains("contact__family")) {
+    //     sortLi[i].style.display = 'none';
+    //   } else {
+    //     sortLi[i].style.display = 'block'
+    //   }
+    // }
   });
 
   elFri.addEventListener('click', () => {
     let sortLi = document.querySelectorAll('li');
 
-    for(let i = 0; i < sortLi.length; i++) {
-      if(! sortLi[i].classList.contains("contact__friends")) {
-        sortLi[i].style.display = 'none';
-      } else {
-        sortLi[i].style.display = 'block';
+    let a = [...sortLi].filter(el => {
+      if(! el.classList.contains("contact__friends")) {
+        el.style.display = 'none'
+        return el
       }
-    }
+      else {
+        el.style.display = 'block'
+        return el
+      }
+    })
+
+    // for(let i = 0; i < sortLi.length; i++) {
+    //   if(! sortLi[i].classList.contains("contact__friends")) {
+    //     sortLi[i].style.display = 'none';
+    //   } else {
+    //     sortLi[i].style.display = 'block';
+    //   }
+    // }
 
   });
 
   elCol.addEventListener('click', () => {
     let sortLi = document.querySelectorAll('li');
 
-    for(let i = 0; i < sortLi.length; i++) {
-      if(! sortLi[i].classList.contains("contact__colleague")) {
-        sortLi[i].style.display = 'none';
-      } else {
-        sortLi[i].style.display = 'block';
+    let a = [...sortLi].filter(el => {
+      if(! el.classList.contains("contact__colleague")) {
+        el.style.display = 'none'
+        return el
       }
-    }
+      else {
+        el.style.display = 'block'
+        return el
+      }
+    });
+
+    // for(let i = 0; i < sortLi.length; i++) {
+    //   if(! sortLi[i].classList.contains("contact__colleague")) {
+    //     sortLi[i].style.display = 'none';
+    //   } else {
+    //     sortLi[i].style.display = 'block';
+    //   }
+    // }
 
   });
