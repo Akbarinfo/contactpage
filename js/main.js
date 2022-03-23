@@ -5,79 +5,100 @@ const elNumber = document.querySelector('input[id="number"]');
 const elCategory = document.getElementById('contact-cat');
 const elList = document.querySelector('#id-list');
 
+
 // SORTLASH QISMI
 const elAll = document.getElementById('all');
 const elFam = document.getElementById('fam');
 const elFri = document.getElementById('fri');
 const elCol = document.getElementById('col');
 
+
+//Yangi array
+
+const newArr = [
+  {
+    name: 'Toshmat',
+    fname: 'Eshmatov',
+    number: 998901234567,
+    cate: 'Friends'
+  }
+]
+
+window.addEventListener('load', () => {
+  let li = document.createElement('li');
+  for(let i = 0; i < newArr.length; i++) {
+    li.className = `contact__item contact__${newArr[i].cate}`;
+
+    li.innerHTML = `
+    <p class="contact__text">
+    <span class="contact__cate">Full name</span>
+    ${newArr[i].name} ${newArr[i].fname}
+  </p>
+  <p class="contact__text">
+    <span class="contact__cate">Number</span>
+    +${newArr[i].number}
+  </p>
+
+  <p class="contact__text">
+    <span class="contact__cate">Category</span>
+    ${newArr[i].cate}
+  </p>
+
+  <p class="contact__text"><a class="contact__tel" href="tel:+${newArr[i].number}">Call <i class='bx bxs-phone-call'></i></a></p>
+    `
+  }
+  elList.appendChild(li);
+})
+
+
 elForm.addEventListener('submit', addItem);
 
 function addItem(e) {
   e.preventDefault();
 
-  // ismni olamiz
+  newArr.push({
+    name: elName.value,
+    fname: elFname.value,
+    number: elNumber.value,
+    cate: elCategory.value
+  });
 
-  let name = elName.value;
-  let nameItem = document.createElement('p');
-  nameItem.className = "contact__text";
+  let li = document.createElement('li');
+  for(let i = 1; i < newArr.length; i++) {
+    li.className = `contact__item contact__${newArr[i].cate}`;
 
-  // familya olamiz
+    li.innerHTML = `
+    <p class="contact__text">
+    <span class="contact__cate">Full name</span>
+    ${newArr[i].name} ${newArr[i].fname}
+  </p>
+  <p class="contact__text">
+    <span class="contact__cate">Number</span>
+    +${newArr[i].number}
+  </p>
 
-  let fname = elFname.value;
-  nameItem.innerHTML = `
-  <span class="contact__cate">Full name</span>
-  ${name} ${fname}
-  `;
+  <p class="contact__text">
+    <span class="contact__cate">Category</span>
+    ${newArr[i].cate}
+  </p>
 
-
-  // Number olamiz
-
-  let number = elNumber.value;
-  let iNumber = document.createElement('p');
-  iNumber.className = "contact__text";
-  iNumber.innerHTML = `<span class="contact__cate">Number</span>
-  ${number}`;
-  // iNumber.textContent = number;
-
-  // Categoty
-
-  let cate = document.createElement('p');
-  cate.className = "contact__text";
-  cate.innerHTML = `<span class="contact__cate">Category</span>
-  ${elCategory.value}`;
-  // cate.textContent = elCategory.value;
-
-  // Telfon qilish
-
-  let cNumber = document.createElement('p');
-  cNumber.className = "contact__text";
-  cNumber.innerHTML = `<a class="contact__tel" href="tel:${number}">Call <i class='bx bxs-phone-call'></i></a>`;
-
-
-  // li itemga qo'shamiz
-
-  let liItem = document.createElement('li');
-  liItem.className = `contact__item contact__${elCategory.value}`;
-
-
-  liItem.appendChild(nameItem);
-  liItem.appendChild(iNumber);
-  liItem.appendChild(cate);
-  liItem.appendChild(cNumber);
-
-
+  <p class="contact__text"><a class="contact__tel" href="tel:+${newArr[i].number}">Call <i class='bx bxs-phone-call'></i></a></p>
+    `
+  }
   // inputlarni tozalash
 
   elName.value = '';
   elFname.value = '';
-  elNumber.value = '';
+  elNumber.value = '998';
+
 
   // display chiqaramiz
 
-  elList.appendChild(liItem);
+  elList.appendChild(li);
 
 }
+
+console.log(newArr)
 
 
 // Filter qilish qismi
